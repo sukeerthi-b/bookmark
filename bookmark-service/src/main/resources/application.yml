@@ -1,0 +1,14 @@
+server:
+  port: 4079
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:32345/postgres?currentSchema=engstream
+    username: postgres
+    password: admin123
+    hikari:
+      driver-class-name: org.postgresql.Driver
