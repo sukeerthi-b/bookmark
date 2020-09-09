@@ -12,3 +12,5 @@ spring:
     password: admin123
     hikari:
       driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: db/changelog/db.changelog-master.yaml

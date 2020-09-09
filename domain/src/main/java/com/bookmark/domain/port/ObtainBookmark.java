@@ -1,5 +1,9 @@
 package com.bookmark.domain.port;
 
-public interface ObtainBookmark {
+import com.bookmark.domain.model.Bookmark;
 
+import java.util.List;
+
+public interface ObtainBookmark {
+    List<Bookmark> getBookmarks();
 }
