@@ -17,7 +17,7 @@ public class Bookmark {
     private String title;
     private String source;
     private String shortUrl;
-    private BigDecimal groupId;
+    private Long groupId;
     private LocalDate expiredDate;
     private String createdBy;
     private LocalDate createdOn;

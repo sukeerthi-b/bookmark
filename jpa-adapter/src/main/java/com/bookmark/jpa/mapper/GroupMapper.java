@@ -15,7 +15,7 @@ public enum GroupMapper {
     GROUP_MAPPER;
 
     public List<Group> constructGroup(final List<GroupEntity> groupEntities) {
-        return isEmpty(groupEntities) ? groupEntities.stream().map(this::constructGroup).collect(Collectors.toList())
+        return !isEmpty(groupEntities) ? groupEntities.stream().map(this::constructGroup).collect(Collectors.toList())
                 : Collections.emptyList();
     }
 

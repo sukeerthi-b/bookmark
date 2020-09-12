@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ObtainGroup {
     List<Group> getGroups();
+    void save(Group group);
 }

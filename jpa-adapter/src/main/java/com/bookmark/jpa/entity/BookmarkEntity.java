@@ -33,12 +33,11 @@ public class BookmarkEntity {
     @Column(name = "short_url")
     private String shortUrl;
     @Column(name = "group_tecid")
-    private BigDecimal groupId;
+    private Long groupId;
     @Column(name = "expired_date")
     private LocalDate expiredDate;
     @Column(name = "created_by")
     private String createdBy;
     @Column(name = "created_on")
     private LocalDate createdOn;
-
 }

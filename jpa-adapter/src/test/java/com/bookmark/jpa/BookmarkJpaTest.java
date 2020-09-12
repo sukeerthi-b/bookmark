@@ -4,8 +4,11 @@ package com.bookmark.jpa;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
 
+import com.bookmark.domain.model.Bookmark;
 import com.bookmark.jpa.dao.BookmarkDao;
+import com.bookmark.jpa.dao.GroupDao;
 import com.bookmark.jpa.entity.BookmarkEntity;
+import com.bookmark.jpa.entity.GroupEntity;
 import com.bookmark.jpa.repository.BookmarkRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +29,8 @@ public class BookmarkJpaTest {
     @Autowired
     private BookmarkDao bookmarkDao;
     @Autowired
+    private GroupDao groupDao;
+    @Autowired
     private BookmarkRepository bookmarkRepository;
 
     @BeforeEach
@@ -43,13 +48,28 @@ public class BookmarkJpaTest {
     }
 
     @Test
+    @DisplayName("should get bookmarks by groupId using database")
+    public void shouldGetBookmarksByGroupIdUsingDataBase() {
+        //Given
+
+        BookmarkEntity bookmarkEntity = mockBookmarkEntityWithGroup();
+        bookmarkDao.save(bookmarkEntity);
+        //When
+        List<BookmarkEntity> bookmarks = bookmarkDao.findAll();
+        //Then
+        assertThat(bookmarks).isNotEmpty();
+        assertThat(bookmarks).extracting("title", "description")
+                .contains(tuple(bookmarkEntity.getTitle(), bookmarkEntity.getDescription()));
+    }
+
+    @Test
     @DisplayName("should get bookmarks using database")
     public void shouldGetBookmarksUsingDataBase() {
         //Given
         BookmarkEntity bookmarkEntity = mockBookmarkEntity();
         bookmarkDao.save(bookmarkEntity);
         //When
-        List<BookmarkEntity> bookmarks = bookmarkDao.findAll();
+        List<Bookmark> bookmarks = bookmarkRepository.getBookmarks(null);
         //Then
         assertThat(bookmarks).isNotEmpty();
         assertThat(bookmarks).extracting("title", "description")
@@ -61,5 +81,15 @@ public class BookmarkJpaTest {
                 .description("test").title("Google").source("sg").createdBy("keerti").createdOn(LocalDate.now()).build();
     }
 
+    private BookmarkEntity mockBookmarkEntityWithGroup() {
+        GroupEntity groupEntity = mockGroupEntity();
+        groupDao.save(groupEntity);
+        return BookmarkEntity.builder().groupId(groupEntity.getId()).actualUrl("https://www.google.com/").shortUrl("https://g.com")
+                .description("test").title("Google").source("sg").createdBy("keerti").createdOn(LocalDate.now()).build();
+    }
+
+    private GroupEntity mockGroupEntity() {
+        return GroupEntity.builder().description("itec desc").name("ITEC").build();
+    }
 
 }

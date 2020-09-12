@@ -5,5 +5,6 @@ import com.bookmark.domain.model.Bookmark;
 import java.util.List;
 
 public interface ObtainBookmark {
-    List<Bookmark> getBookmarks();
+    List<Bookmark> getBookmarks(final Long groupId);
+    void save(Bookmark bookmark);
 }

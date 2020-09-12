@@ -21,7 +21,7 @@ public enum  BookmarkHelper {
         if(isAllPortsNotAvailable()) {
             throw new BookmarkException(PORTS_NOT_AVAILABLE);
         }
-        return obtainBookmark.getBookmarks();
+        return obtainBookmark.getBookmarks(null);
     }
 
     private boolean isAllPortsNotAvailable() {

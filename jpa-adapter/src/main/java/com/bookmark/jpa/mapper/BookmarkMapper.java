@@ -14,7 +14,7 @@ public enum BookmarkMapper {
 	BOOKMARK_MAPPER;
 
 	public List<Bookmark> constructBookmark(final List<BookmarkEntity> bookmarkEntities) {
-		return isEmpty(bookmarkEntities) ? bookmarkEntities.stream().map(this::constructBookmark).collect(Collectors.toList())
+		return !isEmpty(bookmarkEntities) ? bookmarkEntities.stream().map(this::constructBookmark).collect(Collectors.toList())
 				: Collections.emptyList();
 	}
 
