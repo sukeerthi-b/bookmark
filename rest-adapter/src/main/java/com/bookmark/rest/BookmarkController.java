@@ -1,6 +1,7 @@
 package com.bookmark.rest;
 
 import com.bookmark.domain.model.Bookmark;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +22,8 @@ public class BookmarkController {
 	private RequestBookmark requestBookmark;
 
 
+
+	@ApiOperation(value = "Get bookmarks", notes = "Get bookmarks")
 	@GetMapping("bookmarks")
 	public ResponseEntity<List<Bookmark>> getCategories() {
 		return ResponseEntity.ok(requestBookmark.getBookmarks());

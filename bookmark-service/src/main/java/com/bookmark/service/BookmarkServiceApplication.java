@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"com.bookmark.jpa.dao"})
 @EntityScan("com.bookmark.jpa.entity")
 @ComponentScan(basePackages = "com.bookmark.*")
+
 public class BookmarkServiceApplication {
 
 	public static void main(String[] args) {

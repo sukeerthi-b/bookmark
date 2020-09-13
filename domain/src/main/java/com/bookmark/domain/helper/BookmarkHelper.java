@@ -24,6 +24,13 @@ public enum  BookmarkHelper {
         return obtainBookmark.getBookmarks(null);
     }
 
+    public void save(final Bookmark bookmark) {
+        if(isAllPortsNotAvailable() || isNull(bookmark)) {
+            throw new BookmarkException(PORTS_NOT_AVAILABLE);
+        }
+        obtainBookmark.save(bookmark);
+    }
+
     private boolean isAllPortsNotAvailable() {
         return isNull(this.obtainBookmark);
     }

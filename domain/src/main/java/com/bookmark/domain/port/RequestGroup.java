@@ -1,5 +1,11 @@
 package com.bookmark.domain.port;
 
-public interface RequestGroup {
+import com.bookmark.domain.model.Group;
 
+import java.util.List;
+
+public interface RequestGroup {
+    List<Group> getGroups();
+
+    void save(Group group);
 }

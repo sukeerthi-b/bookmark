@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface RequestBookmark {
     List<Bookmark> getBookmarks();
+
+    void save(Bookmark bookmark);
 }
