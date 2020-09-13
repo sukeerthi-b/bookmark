@@ -1,6 +1,8 @@
 package com.bookmark.rest;
 
-import com.bookmark.domain.model.Bookmark;
+import com.bookmark.rest.mapper.BookmarkMapper;
+import com.bookmark.rest.model.Bookmark;
+import com.bookmark.rest.model.BookmarkDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,8 +24,9 @@ public class BookmarkController {
 
 
 	@GetMapping("bookmarks")
-	public ResponseEntity<List<Bookmark>> getCategories() {
-		return ResponseEntity.ok(requestBookmark.getBookmarks());
+	public ResponseEntity<BookmarkDetails> getCategories() {
+		return ResponseEntity.ok(BookmarkDetails.builder().bookmarks(BookmarkMapper.BOOKMARK_MAPPER
+				.constructBookmark(requestBookmark.getBookmarks())).build());
 	}
 
 }
