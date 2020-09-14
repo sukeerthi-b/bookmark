@@ -22,12 +22,12 @@ public enum GroupMapper {
                 .name(group.getName()).build() : null;
     }
 
-    public List<Group> constructGroupEntity(final List<com.bookmark.rest.model.Group> groupEntities) {
-        return isEmpty(groupEntities) ? groupEntities.stream().map(this::constructGroupEntity).collect(Collectors.toList())
+    public List<Group> constructGroups(final List<com.bookmark.rest.model.Group> groupEntities) {
+        return isEmpty(groupEntities) ? groupEntities.stream().map(this::constructGroup).collect(Collectors.toList())
                 : Collections.emptyList();
     }
 
-    public Group constructGroupEntity(final com.bookmark.rest.model.Group group) {
+    public Group constructGroup(final com.bookmark.rest.model.Group group) {
         return nonNull(group) ? Group.builder().description(group.getDescription()).id(group.getId())
                 .name(group.getName()).build() : null;
     }

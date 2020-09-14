@@ -8,4 +8,6 @@ public interface RequestBookmark {
     List<Bookmark> getBookmarks();
 
     void save(Bookmark bookmark);
+
+    String getOriginalURL(String shortUrl);
 }

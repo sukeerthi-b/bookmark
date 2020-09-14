@@ -31,6 +31,11 @@ public class BookmarkDomain implements RequestBookmark, RequestGroup {
 	}
 
 	@Override
+	public String getOriginalURL(String shortUrl) {
+		return null;
+	}
+
+	@Override
 	public List<Group> getGroups() {
 		GROUP_HELPER.init(obtainGroup);
 		return GROUP_HELPER.getGroups();

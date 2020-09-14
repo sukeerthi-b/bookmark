@@ -10,6 +10,7 @@ import com.bookmark.domain.BookmarkDomain;
 import com.bookmark.domain.port.ObtainBookmark;
 import com.bookmark.domain.port.RequestBookmark;
 import com.bookmark.jpa.config.BookmarkJpaConfig;
+import org.springframework.context.annotation.Primary;
 
 import java.awt.print.Book;
 
@@ -17,6 +18,7 @@ import java.awt.print.Book;
 @Import(BookmarkJpaConfig.class)
 public class BookmarkServiceConfig {
 
+	@Primary
 	@Bean
 	public RequestBookmark getRequestBookmark(final ObtainBookmark obtainBookmark) {
 		return BookmarkDomain.builder().obtainBookmark(obtainBookmark).build();

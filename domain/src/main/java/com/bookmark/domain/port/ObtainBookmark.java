@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ObtainBookmark {
     List<Bookmark> getBookmarks(final Long groupId);
-    void save(Bookmark bookmark);
+    Bookmark save(Bookmark bookmark);
+    Bookmark getBookmarksByShortUrl(final String shortUrl);
 }

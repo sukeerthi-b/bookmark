@@ -24,6 +24,11 @@ public enum GroupMapper {
                 .name(groupEntity.getName()).build() : null;
     }
 
+    public GroupEntity constructGroup(final Group group) {
+        return nonNull(group) ? GroupEntity.builder().description(group.getDescription()).id(group.getId())
+                .name(group.getName()).build() : null;
+    }
+
     public List<GroupEntity> constructGroupEntity(final List<Group> groupEntities) {
         return isEmpty(groupEntities) ? groupEntities.stream().map(this::constructGroupEntity).collect(Collectors.toList())
                 : Collections.emptyList();

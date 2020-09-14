@@ -21,4 +21,5 @@ public class Bookmark {
     private LocalDate expiredDate;
     private String createdBy;
     private LocalDate createdOn;
+    private Group group;
 }

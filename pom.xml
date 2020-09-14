@@ -91,12 +91,12 @@
 				</exclusions>
 			</dependency>
 			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-				<version>2.8.6</version>
-			</dependency>
-			<!--cucumber dependency -->
+<!--			<dependency>-->
+<!--				<groupId>com.google.code.gson</groupId>-->
+<!--				<artifactId>gson</artifactId>-->
+<!--				<version>2.8.6</version>-->
+<!--			</dependency>-->
+<!--			&lt;!&ndash;cucumber dependency &ndash;&gt;-->
 			<dependency>
 				<groupId>info.cukes</groupId>
 				<artifactId>cucumber-junit</artifactId>

@@ -55,12 +55,29 @@ public class BookmarkJpaTest {
         BookmarkEntity bookmarkEntity = mockBookmarkEntityWithGroup();
         bookmarkDao.save(bookmarkEntity);
         //When
-        List<BookmarkEntity> bookmarks = bookmarkDao.findAll();
+        List<Bookmark> bookmarks = bookmarkRepository.getBookmarks(bookmarkEntity.getGroupEntity().getId());
         //Then
         assertThat(bookmarks).isNotEmpty();
         assertThat(bookmarks).extracting("title", "description")
                 .contains(tuple(bookmarkEntity.getTitle(), bookmarkEntity.getDescription()));
     }
+
+
+    @Test
+    @DisplayName("should get bookmarks by short url using database")
+    public void shouldGetBookmarksByShortUrlUsingDataBase() {
+        //Given
+
+        BookmarkEntity bookmarkEntity = mockBookmarkEntityWithGroup();
+        bookmarkEntity = bookmarkDao.save(bookmarkEntity);
+        //When
+        Bookmark bookmarks = bookmarkRepository.getBookmarksByShortUrl(bookmarkEntity.getShortUrl());
+        //Then
+        assertThat(bookmarks).isNotNull();
+        assertThat(bookmarks).extracting("title", "description")
+                .contains(bookmarkEntity.getTitle(), bookmarkEntity.getDescription());
+    }
+
 
     @Test
     @DisplayName("should get bookmarks using database")
@@ -77,15 +94,15 @@ public class BookmarkJpaTest {
     }
 
     private BookmarkEntity mockBookmarkEntity() {
-        return BookmarkEntity.builder().actualUrl("https://www.google.com/").shortUrl("https://g.com")
+        return BookmarkEntity.builder().actualUrl("https://www.google.com/").shortUrl("https://g.com").expiredDate(LocalDate.now().plusDays(1))
                 .description("test").title("Google").source("sg").createdBy("keerti").createdOn(LocalDate.now()).build();
     }
 
     private BookmarkEntity mockBookmarkEntityWithGroup() {
         GroupEntity groupEntity = mockGroupEntity();
         groupDao.save(groupEntity);
-        return BookmarkEntity.builder().groupId(groupEntity.getId()).actualUrl("https://www.google.com/").shortUrl("https://g.com")
-                .description("test").title("Google").source("sg").createdBy("keerti").createdOn(LocalDate.now()).build();
+        return BookmarkEntity.builder().groupEntity(groupEntity).actualUrl("https://www.google.com/").shortUrl("https://g.com")
+                .description("test").title("Google").source("sg").createdBy("keerti").createdOn(LocalDate.now().plusDays(1)).build();
     }
 
     private GroupEntity mockGroupEntity() {
