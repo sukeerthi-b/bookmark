@@ -10,4 +10,6 @@ public interface RequestBookmark {
     void save(Bookmark bookmark);
 
     String getOriginalURL(String shortUrl);
+
+    List<Bookmark> getBookmarks(final Long groupId);
 }

@@ -24,6 +24,11 @@ public class BookmarkDomain implements RequestBookmark, RequestGroup {
 		return BOOKMARK_HELPER.getBookmarks();
 	}
 
+	public List<Bookmark> getBookmarks(final Long groupId) {
+		BOOKMARK_HELPER.init(obtainBookmark);
+		return BOOKMARK_HELPER.getBookmarks(groupId);
+	}
+
 	@Override
 	public void save(Bookmark bookmark) {
 		BOOKMARK_HELPER.init(obtainBookmark);
@@ -32,7 +37,7 @@ public class BookmarkDomain implements RequestBookmark, RequestGroup {
 
 	@Override
 	public String getOriginalURL(String shortUrl) {
-		return null;
+		return BOOKMARK_HELPER.getOriginalURL(shortUrl);
 	}
 
 	@Override

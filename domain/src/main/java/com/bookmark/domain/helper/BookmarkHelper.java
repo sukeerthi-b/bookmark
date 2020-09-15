@@ -7,6 +7,9 @@ import static java.util.Objects.nonNull;
 import com.bookmark.domain.exception.BookmarkException;
 import com.bookmark.domain.model.Bookmark;
 import com.bookmark.domain.port.ObtainBookmark;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,6 +37,13 @@ public enum  BookmarkHelper {
         return obtainBookmark.getBookmarks(null);
     }
 
+    public List<Bookmark> getBookmarks(final Long groupId) {
+        if(isAllPortsNotAvailable()) {
+            throw new BookmarkException(PORTS_NOT_AVAILABLE);
+        }
+        return obtainBookmark.getBookmarks(groupId);
+    }
+
     public void save(final Bookmark bookmark) {
         if(isAllPortsNotAvailable() || isNull(bookmark)) {
             throw new BookmarkException(PORTS_NOT_AVAILABLE);
@@ -47,9 +57,10 @@ public enum  BookmarkHelper {
     }
 
     private String updateShortcutUrl(Bookmark bookmark) {
+
         String shortString = ConversionHelper.CONVERSION_HELPER.encode(bookmark.getId());
         StringBuilder shortUrlBuffer = new StringBuilder();
-        shortUrlBuffer.append("http://bookmarks/");
+        shortUrlBuffer.append(getDomainName(bookmark.getActualUrl()));
         if (Objects.nonNull(bookmark.getGroup())) {
             shortUrlBuffer.append(bookmark.getGroup().getName());
             shortUrlBuffer.append("/");
@@ -58,5 +69,15 @@ public enum  BookmarkHelper {
         }
         shortUrlBuffer.append(shortString);
         return shortUrlBuffer.toString();
+    }
+
+    public String getDomainName(String url) {
+        try {
+            URI uri = new URI(url);
+            String domain = uri.getHost();
+            return domain.startsWith("www.") ? domain.substring(4) : domain;
+        } catch (URISyntaxException exception) {
+            throw new BookmarkException("Url syntax error");
+        }
     }
 }

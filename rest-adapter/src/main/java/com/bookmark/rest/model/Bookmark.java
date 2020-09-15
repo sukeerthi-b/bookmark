@@ -2,6 +2,7 @@ package com.bookmark.rest.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
@@ -19,4 +20,5 @@ public class Bookmark {
     private LocalDate expiredDate;
     private String createdBy;
     private LocalDate createdOn;
+    private MultipartFile image;
 }

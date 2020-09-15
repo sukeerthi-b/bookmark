@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import com.bookmark.domain.port.RequestBookmark;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/bookmarks")
@@ -27,6 +26,12 @@ public class BookmarkController {
 	public ResponseEntity<BookmarkDetails> getBookmarks() {
 		return ResponseEntity.ok(BookmarkDetails.builder().bookmarks(BOOKMARK_MAPPER
 				.constructBookmark(requestBookmark.getBookmarks())).build());
+	}
+
+	@GetMapping(value = "/{groupId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BookmarkDetails> getBookmarks(@PathVariable Long groupId) {
+		return ResponseEntity.ok(BookmarkDetails.builder().bookmarks(BOOKMARK_MAPPER
+				.constructBookmark(requestBookmark.getBookmarks(groupId))).build());
 	}
 
 	@PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
