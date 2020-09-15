@@ -56,7 +56,7 @@ public class BookmarkController {
 	@Operation(summary = "Redirect to original url")
 	@ApiResponse(responseCode = "200", description = "Successfully redirected to the original url")
 	@ApiResponse(responseCode = "404", description = "Service not available")
-	@GetMapping(value = "/{shortUrl}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "redirect/{shortUrl}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> redirect(@Parameter(description = "short url") @PathVariable String shortUrl) {
 		String url = requestBookmark.getOriginalURL(shortUrl);
 		return ResponseEntity.status(HttpStatus.FOUND)
