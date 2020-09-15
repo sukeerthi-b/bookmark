@@ -56,7 +56,7 @@ public enum  BookmarkHelper {
         return isNull(this.obtainBookmark);
     }
 
-    private String updateShortcutUrl(Bookmark bookmark) {
+    private void updateShortcutUrl(Bookmark bookmark) {
 
         String shortString = ConversionHelper.CONVERSION_HELPER.encode(bookmark.getId());
         StringBuilder shortUrlBuffer = new StringBuilder();
@@ -68,7 +68,8 @@ public enum  BookmarkHelper {
             shortUrlBuffer.append("tiny/");
         }
         shortUrlBuffer.append(shortString);
-        return shortUrlBuffer.toString();
+        bookmark = bookmark.toBuilder().shortUrl(shortUrlBuffer.toString()).build();
+        obtainBookmark.save(bookmark);
     }
 
     public String getDomainName(String url) {

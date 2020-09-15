@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Builder
+@Builder(toBuilder = true)
 @Getter
 public class Bookmark {
     private Long id;
