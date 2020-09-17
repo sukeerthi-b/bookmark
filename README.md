@@ -14,3 +14,12 @@ https://hackernoon.com/url-shortening-service-in-java-spring-boot-and-redis-d2a0
 
 #Problem
 https://github.com/engineering-stream-hackathon/challenge
+
+#auth
+https://github.com/oktadeveloper/spring-boot-microservices-example/pull/8/files
+
+#open API3
+http://localhost:4079/v3/api-docs/
+http://localhost:4079/swagger-ui.html
+http://localhost:4079/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+https://www.baeldung.com/spring-rest-openapi-documentation

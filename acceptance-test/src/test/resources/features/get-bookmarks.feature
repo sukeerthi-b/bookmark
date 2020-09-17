@@ -9,5 +9,5 @@ Feature: User would like to get the bookmarks
   Scenario: User request for bookmark information
     When user requests for bookmark details
     Then user gets bookmark information as
-      | createdBy | actualUrl         | title  | source | short_url     |
+      | createdBy | actualUrl         | title  | source | shortUrl     |
       | sukeerti  | https://google.com| google | SG     | https://g.com |

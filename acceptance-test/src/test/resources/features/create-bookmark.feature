@@ -7,12 +7,12 @@ Feature: User would like to add the bookmark to specific group
       | sukeerti  | https://google.com| google | SG     |
     When user creates a bookmark
     Then the following bookmark created
-      | createdBy | actualUrl         | title  | source | short_url                |
+      | createdBy | actualUrl         | title  | source | shortUrl                |
       | sukeerti  | https://google.com| google | SG     | <Random generated value> |
 
   Scenario: User creating bookmark for a given group
     Given the following group information
-      | name | description | created_by  |
+      | name | description | createdBy  |
       | ITEC | ITEC        | sukeerti    |
     And the following bookmark information
       | createdBy | actualUrl         | title  | source |
@@ -20,5 +20,5 @@ Feature: User would like to add the bookmark to specific group
 
     When user creates a bookmark
     Then the following bookmark created
-      | createdBy | actualUrl         | title  | source | short_url                | groupEntity.name |
+      | createdBy | actualUrl         | title  | source | shortUrl                 | groupEntity.name |
       | sukeerti  | https://google.com| google | SG     | <Random generated value> | ITEC             |
