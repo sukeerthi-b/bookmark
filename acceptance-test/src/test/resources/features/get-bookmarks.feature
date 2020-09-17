@@ -1,3 +1,4 @@
+@get-bookmarks
 Feature: User would like to get the bookmarks
 
   Background:

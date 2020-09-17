@@ -20,8 +20,8 @@ public class BookmarkJpaApplication {
     @TestConfiguration
     static class BookmarkJpaTestConfiguration {
         @Bean
-        public ObtainBookmark getBookmarkRepository(final BookmarkDao bookmarkDao) {
-            return new BookmarkRepository(bookmarkDao);
+        public ObtainBookmark getBookmarkRepository(final BookmarkDao bookmarkDao, final GroupDao groupDao) {
+            return new BookmarkRepository(bookmarkDao, groupDao);
         }
 
         @Bean

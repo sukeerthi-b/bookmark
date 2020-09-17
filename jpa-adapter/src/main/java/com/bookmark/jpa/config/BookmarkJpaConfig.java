@@ -14,8 +14,8 @@ import com.bookmark.domain.port.ObtainBookmark;
 public class BookmarkJpaConfig {
 
 	@Bean
-	public ObtainBookmark getBookmarkJpaAdapter(final BookmarkDao bookmarkDao) {
-		return new BookmarkRepository(bookmarkDao);
+	public ObtainBookmark getBookmarkJpaAdapter(final BookmarkDao bookmarkDao, final GroupDao groupDao) {
+		return new BookmarkRepository(bookmarkDao, groupDao);
 	}
 
 	@Bean
