@@ -41,7 +41,21 @@ public class GroupJpaTest {
                 Tuple.tuple(groupEntity.getName(), groupEntity.getDescription()));
     }
 
+    @DisplayName("should save group using data base")
+    @Test
+    public void shouldSaveGroupUsingDatabase() {
+        //given group details
+        Group group = mockGroup();
+        //when
+        groupRepository.save(group);
+
+    }
+
     private GroupEntity mockGroupEntity() {
         return GroupEntity.builder().description("itec desc").name("ITEC").build();
+    }
+
+    private Group mockGroup() {
+        return Group.builder().description("itec desc").name("ITEC").build();
     }
 }

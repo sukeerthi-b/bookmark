@@ -7,8 +7,6 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 import com.bookmark.domain.exception.BookmarkException;
 import com.bookmark.domain.model.Bookmark;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

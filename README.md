@@ -1,25 +1,24 @@
 # About Project
- Its a Microserivce project to provide multple services to the book mark application.
-#Prerequisite 
-Java 1.8
-Spring Boot
-#API's Designed
-    
-#Common Git Commands
-
-#Reference urls
-https://dzone.com/articles/upload-and-retrieve-filesimages-using-spring-boot
-https://dzone.com/articles/url-shortener-detailed-explanation
-https://hackernoon.com/url-shortening-service-in-java-spring-boot-and-redis-d2a0f8848a1d
-
-#Problem
-https://github.com/engineering-stream-hackathon/challenge
-
-#auth
-https://github.com/oktadeveloper/spring-boot-microservices-example/pull/8/files
-
-#open API3
-http://localhost:4079/v3/api-docs/
-http://localhost:4079/swagger-ui.html
+ Its a Micro service project, which provides multiple API end points to save, retrieve bookmarks at one centralized place.
+ 
+##Swagger link 
 http://localhost:4079/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
-https://www.baeldung.com/spring-rest-openapi-documentation
+
+#Technology
+Microservices sample project uses a number of open source projects to work properly:
+SpringBoot - Application framework
+Swagger - API documentation
+Jacoco - Code Coverage
+Liquibase - For tracking, managing and applying database schema changes
+Lombok - Reduce boilerplate code for model/data objects
+cucumber - Used to write acceptence test cases
+Junit - Unit test cases
+------
+-----
+
+#Tools 
+Java 1.8
+Spring 
+Maven
+Postgres
+Git

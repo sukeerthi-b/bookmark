@@ -10,6 +10,7 @@ import com.bookmark.domain.port.ObtainBookmark;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,10 +45,11 @@ public enum  BookmarkHelper {
         return obtainBookmark.getBookmarks(groupId);
     }
 
-    public void save(final Bookmark bookmark) {
+    public void save(Bookmark bookmark) {
         if(isAllPortsNotAvailable() || isNull(bookmark)) {
             throw new BookmarkException(PORTS_NOT_AVAILABLE);
         }
+        bookmark = bookmark.toBuilder().createdOn(LocalDate.now()).build();
         Bookmark bookmarkAfterSave = obtainBookmark.save(bookmark);
         updateShortcutUrl(bookmarkAfterSave);
     }

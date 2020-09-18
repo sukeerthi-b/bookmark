@@ -78,6 +78,7 @@ public class GetGroupsStepDef implements En {
     private void dbCleanUp() {
         groupDao.deleteAll();
     }
+
     @BeforeEach
     public void setup() {
         dbCleanUp();

@@ -3,9 +3,12 @@ package com.bookmark.cucumber;
 
 import com.bookmark.BookmarkE2EApplication;
 import com.bookmark.jpa.dao.BookmarkDao;
+import com.bookmark.jpa.dao.GroupDao;
 import com.bookmark.jpa.entity.BookmarkEntity;
+import com.bookmark.jpa.entity.GroupEntity;
 import com.bookmark.rest.model.Bookmark;
 import com.bookmark.rest.model.BookmarkDetails;
+import com.bookmark.rest.model.Group;
 import cucumber.api.DataTable;
 import cucumber.api.java8.En;
 import org.junit.jupiter.api.AfterEach;
@@ -37,17 +40,20 @@ public class CreateBookmarkStepDef implements En {
     private static final String LOCALHOST = "http://localhost:";
     private static final String API_URL = "api/v1/bookmarks";
     private BookmarkDao bookmarkDao;
+    private GroupDao groupDao;
     private TestRestTemplate restTemplate;
     @LocalServerPort
     private int port;
     private ResponseEntity responseEntity;
     private Bookmark bookmark;
+    private GroupEntity groupEntity;
     private Bookmark bookmarkWithGroup;
 
 
-    public CreateBookmarkStepDef(TestRestTemplate template, BookmarkDao bookmarkDao) {
+    public CreateBookmarkStepDef(TestRestTemplate template, BookmarkDao bookmarkDao, GroupDao groupDao) {
         this.restTemplate = template;
         this.bookmarkDao = bookmarkDao;
+        this.groupDao = groupDao;
 
         Given("^the following bookmark details", (DataTable bookmarkDataTable) -> {
             bookmark = bookmarkDataTable.asList(Bookmark.class).get(0);
@@ -64,9 +70,8 @@ public class CreateBookmarkStepDef implements En {
             assertThat(responseEntity).extracting("status").isEqualTo(HttpStatus.OK.value());
             assertThat(bookmarks).isNotNull();
             assertThat(bookmarks.size()).isEqualTo(1);
-            assertThat(bookmarks.get(0)).extracting("title", "source")
-                    .contains(tuple(bookmarks.get(0).getTitle(), bookmarks.get(0).getSource()));
         });
+
     }
 
     HttpEntity<MultiValueMap<String, String>> generateHeader()  {

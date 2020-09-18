@@ -20,12 +20,12 @@ public class BookmarkServiceConfig {
 
 	@Primary
 	@Bean
-	public RequestBookmark getRequestBookmark(final ObtainBookmark obtainBookmark) {
-		return BookmarkDomain.builder().obtainBookmark(obtainBookmark).build();
+	public RequestBookmark getRequestBookmark(final ObtainBookmark obtainBookmark, final ObtainGroup obtainGroup) {
+		return BookmarkDomain.builder().obtainBookmark(obtainBookmark).obtainGroup(obtainGroup).build();
 	}
 
 	@Bean
-	public RequestGroup getRequestGroup(final ObtainGroup obtainGroup) {
-		return BookmarkDomain.builder().obtainGroup(obtainGroup).build();
+	public RequestGroup getRequestGroup(final ObtainGroup obtainGroup, final ObtainBookmark obtainBookmark) {
+		return BookmarkDomain.builder().obtainGroup(obtainGroup).obtainBookmark(obtainBookmark).build();
 	}
 }

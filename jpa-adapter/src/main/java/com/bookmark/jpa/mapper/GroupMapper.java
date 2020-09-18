@@ -7,6 +7,7 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 import com.bookmark.domain.model.Group;
 import com.bookmark.jpa.entity.GroupEntity;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public enum GroupMapper {
     }
 
     public GroupEntity constructGroupEntity(final Group group) {
-        return nonNull(group) ? GroupEntity.builder().description(group.getDescription()).id(group.getId())
-                .name(group.getName()).build() : null;
+        return nonNull(group) ? GroupEntity.builder().description(group.getDescription())
+                .name(group.getName()).createdOn(LocalDate.now()).createdBy("test").build() : null;
     }
 }
