@@ -13,9 +13,10 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "t_groups")
+@SequenceGenerator(name="bookmark_seq", sequenceName = "bookmark_seq", allocationSize = 1)
 public class GroupEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="bookmark_seq")
     @Column(name = "group_tecid")
     private Long id;
     @Column(name = "name")

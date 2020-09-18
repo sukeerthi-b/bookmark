@@ -12,14 +12,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_bookmarks")
+@SequenceGenerator(name="bookmark_seq", sequenceName = "bookmark_seq", allocationSize = 1)
 public class BookmarkEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bookmrak_tecid")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="bookmark_seq")
+    @Column(name = "bookmark_tecid")
     private Long id;
     @Column(name = "actual_url")
     private String actualUrl;
-    @Lob
     @Column(name = "favicon")
     private byte[] favicon;
     @Column(name = "description")

@@ -67,7 +67,7 @@ public enum  BookmarkHelper {
             shortUrlBuffer.append(bookmark.getGroup().getName());
             shortUrlBuffer.append("/");
         } else {
-            shortUrlBuffer.append("tiny/");
+            shortUrlBuffer.append("/tiny/");
         }
         shortUrlBuffer.append(shortString);
         bookmark = bookmark.toBuilder().shortUrl(shortUrlBuffer.toString()).build();

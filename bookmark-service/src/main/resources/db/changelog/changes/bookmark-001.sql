@@ -12,7 +12,7 @@ create table t_groups (
 	constraint group_tecid_pk primary key(group_tecid)
 );
 create table t_bookmarks(
-	bookmrak_tecid NUMERIC(13) NOT NULL,
+	bookmark_tecid NUMERIC(13) NOT NULL,
 	actual_url varchar(2083) NOT NULL,
 	favicon bytea,
 	description varchar(1000),
@@ -23,5 +23,10 @@ create table t_bookmarks(
 	expired_date date,
 	created_by	VARCHAR (64) NOT NULL,
 	created_on	timestamp (6) WITH TIME ZONE NOT NULL,
-	constraint bookmrak_tecid_pk primary key(bookmrak_tecid)
+	constraint bookmark_tecid_pk primary key(bookmark_tecid)
 );
+
+--changeset sukeerti.botu:002-bookmark-001 failOnError:true splitStatements:false logicalFilePath:bookmark-001.sql
+CREATE SEQUENCE bookmark_seq
+INCREMENT 1
+START 100;

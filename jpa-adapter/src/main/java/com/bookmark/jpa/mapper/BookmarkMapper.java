@@ -6,6 +6,7 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 import com.bookmark.domain.model.Bookmark;
 import com.bookmark.jpa.entity.BookmarkEntity;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +20,8 @@ public enum BookmarkMapper {
 	}
 
 	public Bookmark constructBookmark(final BookmarkEntity bookmarkEntity) {
-		return nonNull(bookmarkEntity) ? Bookmark.builder().actualUrl(bookmarkEntity.getActualUrl())
+		return nonNull(bookmarkEntity) ? Bookmark.builder().actualUrl(bookmarkEntity.getActualUrl()).createdBy(bookmarkEntity.getCreatedBy())
+				.createdOn(bookmarkEntity.getCreatedOn())
 				.description(bookmarkEntity.getDescription()).favicon(bookmarkEntity.getFavicon()).expiredDate(bookmarkEntity.getExpiredDate())
 				.id(bookmarkEntity.getId()).shortUrl(bookmarkEntity.getShortUrl()).source(bookmarkEntity.getSource())
 				.title(bookmarkEntity.getTitle()).group(GroupMapper.GROUP_MAPPER.constructGroup(bookmarkEntity.getGroupEntity())).build() : null;
@@ -31,7 +33,7 @@ public enum BookmarkMapper {
 	}
 
 	public BookmarkEntity constructBookmarkEntity(final Bookmark bookmark) {
-		return nonNull(bookmark) ? BookmarkEntity.builder().actualUrl(bookmark.getActualUrl())
+		return nonNull(bookmark) ? BookmarkEntity.builder().actualUrl(bookmark.getActualUrl()).createdBy(bookmark.getCreatedBy()).createdOn(LocalDate.now())
 				.description(bookmark.getDescription()).favicon(bookmark.getFavicon()).expiredDate(bookmark.getExpiredDate())
 				.groupEntity(GroupMapper.GROUP_MAPPER.constructGroup(bookmark.getGroup())).id(bookmark.getId()).shortUrl(bookmark.getShortUrl()).source(bookmark.getSource())
 				.title(bookmark.getTitle()).build() : null;
