@@ -97,30 +97,30 @@
 <!--				<version>2.8.6</version>-->
 <!--			</dependency>-->
 <!--			&lt;!&ndash;cucumber dependency &ndash;&gt;-->
-			<dependency>
-				<groupId>info.cukes</groupId>
-				<artifactId>cucumber-junit</artifactId>
-				<version>1.2.5</version>
-				<scope>test</scope>
-				<exclusions>
-					<exclusion>
-						<groupId>junit</groupId>
-						<artifactId>junit</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>info.cukes</groupId>
-				<artifactId>cucumber-java8</artifactId>
-				<version>1.2.5</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>info.cukes</groupId>
-				<artifactId>cucumber-core</artifactId>
-				<version>1.2.5</version>
-				<scope>test</scope>
-			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>info.cukes</groupId>-->
+<!--				<artifactId>cucumber-junit</artifactId>-->
+<!--				<version>1.2.5</version>-->
+<!--				<scope>test</scope>-->
+<!--				<exclusions>-->
+<!--					<exclusion>-->
+<!--						<groupId>junit</groupId>-->
+<!--						<artifactId>junit</artifactId>-->
+<!--					</exclusion>-->
+<!--				</exclusions>-->
+<!--			</dependency>-->
+<!--			<dependency>-->
+<!--				<groupId>info.cukes</groupId>-->
+<!--				<artifactId>cucumber-java8</artifactId>-->
+<!--				<version>1.2.5</version>-->
+<!--				<scope>test</scope>-->
+<!--			</dependency>-->
+<!--			<dependency>-->
+<!--				<groupId>info.cukes</groupId>-->
+<!--				<artifactId>cucumber-core</artifactId>-->
+<!--				<version>1.2.5</version>-->
+<!--				<scope>test</scope>-->
+<!--			</dependency>-->
 			<dependency>
 				<groupId>info.cukes</groupId>
 				<artifactId>cucumber-spring</artifactId>

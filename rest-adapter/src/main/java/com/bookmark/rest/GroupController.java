@@ -26,7 +26,7 @@ public class GroupController {
     @ApiResponse(responseCode = "200", description = "Successfully created the groups")
     @ApiResponse(responseCode = "404", description = "Service not available")
     @PostMapping(value = "/groups", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity createBookmark(@RequestBody Group group) {
+    public ResponseEntity createGroup(@RequestBody Group group) {
         requestGroup.save(GROUP_MAPPER.constructGroup(group));
         return ResponseEntity.ok().build();
     }

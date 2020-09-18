@@ -7,6 +7,6 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features", strict = true,
         plugin = {"json:/target/cucumber/bookmarks.json","junit:target/cucumber/bookmark.xml"},
-    tags = {"@get-bookmarks"}, glue = "classpath:com.bookmark.cucumber")
+    tags = {"@get-bookmarks, @create-bookmark, @get-groups, @create-group"}, glue = "classpath:com.bookmark.cucumber")
 public class RunCucumberTests {
 }

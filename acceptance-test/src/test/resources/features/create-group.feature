@@ -2,7 +2,7 @@
 Feature: User would like to add the group details
 
   Background:
-    Given the following group information
+    Given the following group details
       | name | description | createdBy  |
       | ITEC | ITEC        | sukeerti    |
 
